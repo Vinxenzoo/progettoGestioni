@@ -8,6 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+ciao
 public class AmmissioneDAO
 {
     DBConnection dbConnection;
