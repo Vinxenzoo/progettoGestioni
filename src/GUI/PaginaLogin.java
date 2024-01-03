@@ -262,6 +262,7 @@ public class PaginaLogin extends JFrame
             JOptionPane.showMessageDialog(this, "Apro la pagina corrispondente al Link 2");
         }
 
+        //consente di avere l'effetto rimbalzo delle parole
     private void bounceEffect(JComponent component) {
         Timer timer = new Timer(130, new ActionListener() {
             int deltaY = 1;

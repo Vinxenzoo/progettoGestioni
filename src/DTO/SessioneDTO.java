@@ -68,6 +68,7 @@ public class SessioneDTO
             this.coordinatore_es = coordinatore;
         }
 
+    //riscrittura del metodo tostring per poterlo utilizzare durante il codice
         @Override
         public String toString() {
             return

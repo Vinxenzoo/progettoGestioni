@@ -9,7 +9,10 @@ import java.sql.Statement;
 
 public class OccasioneExtraDAO
 {
+    //oggetto che permette di lavorare sul database
     DBConnection dbConnection;
+
+    //Oggetto controller che consente di far comunicare la classe DAO con la classe Controller
     Controller currcontroller;
     private Statement statement;
 
@@ -22,6 +25,7 @@ public class OccasioneExtraDAO
     }
 
 
+    //consente di inserire un occasione speciale all'interno della tabella occasione
     public void ins(Integer cod_ses, String descrizione, String tipo)
     {
         try {

@@ -2,6 +2,7 @@ package DTO;
 
 public class FeedbackDTO
 {
+    //attribut della classe feedack
         private int codFeedback;
         private String feedbackText;
         private PartecipanteDTO partecipante;
@@ -52,6 +53,7 @@ public class FeedbackDTO
             this.intervento = intervento;
         }
 
+    //riscrittura del metodo tostring per poterlo utilizzare durante il codice
         @Override
         public String toString() {
             return

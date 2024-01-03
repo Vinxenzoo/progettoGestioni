@@ -8,7 +8,7 @@ import java.awt.Insets;
 
 public class RounderBorder extends AbstractBorder
 {
-
+    //classe che consente di avere i bordi arrotondati e colorati
     private final int radius;
 
     public RounderBorder(int radius) {

@@ -136,6 +136,7 @@ public class PartecipanteDTO
         this.pass = password;
     }
 
+    //riscrittura del metodo tostring per poterlo utilizzare durante il codice
         @Override
         public String toString() {
             return

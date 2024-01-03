@@ -6,6 +6,7 @@ import java.sql.Date;
 
 public class CoordinatoreDTO
 {
+    //attributi della classe coordinatore
         private int codCoordinatore;
         private String nome;
         private String cognome;
@@ -76,6 +77,7 @@ public class CoordinatoreDTO
         this.passwordcoo = password;
     }
 
+    //riscrittura del metodo tostring per poterlo utilizzare durante il codice
         @Override
         public String toString() {
             return "CoordinatoreDTO{" +

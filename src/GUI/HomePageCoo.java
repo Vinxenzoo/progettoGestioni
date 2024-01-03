@@ -64,7 +64,7 @@ public class HomePageCoo extends JFrame
             button1.addActionListener(e -> {
 
 
-                // Modifica il nome della classe a cui vuoi passare il controllo
+
                 MostraConfCoo conferenzagui = new MostraConfCoo();
                 conferenzagui.setVisible(true);
                 dispose();
@@ -72,7 +72,6 @@ public class HomePageCoo extends JFrame
 
             button2.addActionListener(e -> {
 
-                // Modifica il nome della classe a cui vuoi passare il controllo
                 ImmagineProgettoCoo altraClasse = new ImmagineProgettoCoo();
                 altraClasse.setVisible(true);
                 dispose();
@@ -81,7 +80,6 @@ public class HomePageCoo extends JFrame
             button3.addActionListener(e ->
             {
 
-                // Modifica il nome della classe a cui vuoi passare il controllo
                TabellaComitatoCoo altraClasse = new TabellaComitatoCoo();
                altraClasse.setVisible(true);
                 dispose();
@@ -143,7 +141,6 @@ public class HomePageCoo extends JFrame
             JButton button = new JButton(text);
             button.setPreferredSize(new Dimension(150, 70));
 
-            // Aggiungi un ascoltatore per gestire gli eventi del mouse
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent evt) {

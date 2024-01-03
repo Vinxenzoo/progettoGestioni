@@ -80,19 +80,19 @@ public class EliminaInAmmCoo extends JFrame
         }
 
         private void customizeTableAppearance(JTable table) {
-            // Imposta uno sfondo personalizzato per le celle della tabella
+            //questo Imposta uno sfondo personalizzato per le celle della tabella
             table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
                 @Override
                 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                     Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-                    // Imposta uno sfondo per le celle
+                    //questo Imposta uno sfondo per le celle
                     c.setBackground(row % 2 == 0 ? Color.lightGray : new Color(240, 240, 240));
 
-                    // Imposta l'altezza della riga
+                    //questo Imposta l'altezza della riga
                     table.setRowHeight(row, 40);
 
-                    // Aggiungi un bordo alle celle
+                    // Aggiunta un bordo alle celle
                     Border border = BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK);
                     ((JComponent) c).setBorder(border);
 
@@ -102,7 +102,7 @@ public class EliminaInAmmCoo extends JFrame
         }
 
         private JPanel createBottomPanel() {
-            // Creazione del pannello in basso con il bottone "Torna alla Home"
+            // Creazione del pannello con il bottone "Torna alla Home"
             JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER))
             {
                 @Override
@@ -247,22 +247,22 @@ public class EliminaInAmmCoo extends JFrame
             DefaultTableModel tableModel = new DefaultTableModel();
 
             try {
-                // Ottieni i dati dalla tua connessione e controller
+
                 DBConnection dbConnection = DBConnection.getConnessione();
                 Controller co = new Controller(dbConnection);
 
-                // Sostituisci con il metodo effettivo per ottenere i dati dalla tabella Sessione
+
                 List<AmmissioneDTO> ammlist = co.getListaammissione();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codise Sessione", "Codice Partecipante"};
 
-                // Aggiungi le colonne al modello della tabella
+                // Aggiunta le colonne al modello della tabella
                 tableModel.setColumnIdentifiers(columnNames);
 
                 String no= ""; String cognom = "";
 
-                // Aggiungi i dati al modello della tabella
+                // Aggiunta dei dati al modello della tabella
                 for (AmmissioneDTO ammissione : ammlist) {
 
 
@@ -270,7 +270,7 @@ public class EliminaInAmmCoo extends JFrame
                     tableModel.addRow(rowData);
                 }
             } catch (Exception e) {
-                // Gestione delle eccezioni, sostituisci con la tua logica di gestione degli errori
+                // Gestione delle eccezioni, errori
                 e.printStackTrace();
             }
 

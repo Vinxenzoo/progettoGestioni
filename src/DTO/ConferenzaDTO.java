@@ -3,6 +3,7 @@ import java.sql.Date;
 
 public class ConferenzaDTO
 {
+    //attributi della classe conferenza
         private int codConferenza;
         private String sponsor;
         private String descrizione;
@@ -93,6 +94,7 @@ public class ConferenzaDTO
             this.sede_es = sede;
         }
 
+    //riscrittura del metodo tostring per poterlo utilizzare durante il codice
         @Override
         public String toString() {
             return

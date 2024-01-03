@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-kjkjk
-
 public class HomePage extends JFrame
 {
         public HomePage() {
@@ -63,8 +61,6 @@ public class HomePage extends JFrame
             // Aggiunta di azioni ai bottoni
             button1.addActionListener(e -> {
 
-
-                            // Modifica il nome della classe a cui vuoi passare il controllo
                            Mostraconfingui conferenzagui = new Mostraconfingui();
                             conferenzagui.setVisible(true);
                             dispose();
@@ -72,7 +68,7 @@ public class HomePage extends JFrame
 
             button2.addActionListener(e -> {
 
-                // Modifica il nome della classe a cui vuoi passare il controllo
+
                 ImmagineProgetto altraClasse = new ImmagineProgetto();
                 altraClasse.setVisible(true);
                 dispose();
@@ -80,7 +76,7 @@ public class HomePage extends JFrame
 
             button3.addActionListener(e ->{
 
-                // Modifica il nome della classe a cui vuoi passare il controllo
+
                 TabellaIntervento tb = new TabellaIntervento();
                 tb.setVisible(true);
                 dispose();
@@ -142,7 +138,7 @@ public class HomePage extends JFrame
             JButton button = new JButton(text);
             button.setPreferredSize(new Dimension(150, 70));
 
-            // Aggiungi un ascoltatore per gestire gli eventi del mouse
+
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent evt) {

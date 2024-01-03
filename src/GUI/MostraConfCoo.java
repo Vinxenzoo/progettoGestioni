@@ -77,10 +77,10 @@ public class MostraConfCoo extends JFrame
             conferenzaComboBoxModel = new DefaultComboBoxModel<>();
             conferenzaComboBox = new JComboBox<>(conferenzaComboBoxModel);
 
-            // Imposta le dimensioni desiderate per la JComboBox
+            // Imposta le dimensioni  per la JComboBox
             conferenzaComboBox.setPreferredSize(new Dimension(350, 90));
 
-            // Aggiungi uno spazio vuoto nella parte superiore del pannello
+            // Aggiunta di uno spazio vuoto nella parte superiore del pannello
             centerPanel.setBorder(BorderFactory.createEmptyBorder(50, 0, 0, 0));
 
             centerPanel.add(conferenzaComboBox);
@@ -120,7 +120,6 @@ public class MostraConfCoo extends JFrame
             JButton button = new JButton(text);
             button.setPreferredSize(new Dimension(150, 150));
 
-            // Aggiungi un ascoltatore per gestire gli eventi del mouse
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent evt) {

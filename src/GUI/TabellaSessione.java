@@ -248,7 +248,7 @@ public class TabellaSessione extends JFrame {
         DefaultTableModel tableModel = new DefaultTableModel();
 
         try {
-            // Ottieni i dati dalla tua connessione e controller
+
             DBConnection dbConnection = DBConnection.getConnessione();
             Controller co = new Controller(dbConnection);
 
@@ -268,7 +268,7 @@ public class TabellaSessione extends JFrame {
                 tableModel.addRow(rowData);
             }
         } catch (Exception e) {
-            // Gestione delle eccezioni, sostituisci con la tua logica di gestione degli errori
+            // Gestione delle eccezioni
             e.printStackTrace();
         }
 
@@ -283,7 +283,7 @@ public class TabellaSessione extends JFrame {
         JButton button = new JButton(text);
         button.setPreferredSize(new Dimension(200, 25));
 
-        // Aggiungi un ascoltatore per gestire gli eventi del mouse
+
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent evt) {

@@ -145,27 +145,27 @@ public class TabellaComitato extends JFrame
             DefaultTableModel tableModel = new DefaultTableModel();
 
             try {
-                // Ottieni i dati dalla tua connessione e controller
+
                 DBConnection dbConnection = DBConnection.getConnessione();
                 Controller co = new Controller(dbConnection);
 
-                // Sostituisci con il metodo effettivo per ottenere i dati dalla tabella Sessione
+
                 List<ComitatoDTO> comlist = co.getListacomitato();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codice Comitato", "Nome Comitato"};
 
-                // Aggiungi le colonne al modello della tabella
+                // Aggiunta le colonne al modello della tabella
                 tableModel.setColumnIdentifiers(columnNames);
 
-                // Aggiungi i dati al modello della tabella
+                // Aggiunta i dati al modello della tabella
                 for (ComitatoDTO comitato : comlist) {
-                    // Sostituisci con i metodi effettivi per ottenere i dati specifici dalla SessioneDTO
+
                     Object[] rowData = {comitato.getCodComitato(), comitato.getNomeC()};
                     tableModel.addRow(rowData);
                 }
             } catch (Exception e) {
-                // Gestione delle eccezioni, sostituisci con la tua logica di gestione degli errori
+                // Gestione delle eccezioni
                 e.printStackTrace();
             }
 
@@ -180,7 +180,7 @@ public class TabellaComitato extends JFrame
             JButton button = new JButton(text);
             button.setPreferredSize(new Dimension(250, 25));
 
-            // Aggiungi un ascoltatore per gestire gli eventi del mouse
+
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent evt) {

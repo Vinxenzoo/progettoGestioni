@@ -11,9 +11,11 @@ import java.sql.Statement;
 public class OrganizzatoreDAO
 {
     DBConnection dbConnection;
+    //Oggetto controller che consente di far comunicare la classe DAO con la classe Controller
     Controller currcontroller;
     private Statement statement;
 
+    //costruttore che accetta un oggetto Controller
     public OrganizzatoreDAO(Controller controller)
     {
         currcontroller = controller;
@@ -23,6 +25,7 @@ public class OrganizzatoreDAO
     }
 
 
+    //verifica se presente un organizzatore all'interno della tabella organizzatore
     public boolean verificaPresenzaOrganizzatore(String nome, String cognome, String email, String password) {
         try {
             // Preparare la query SQL

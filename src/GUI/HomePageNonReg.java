@@ -63,7 +63,7 @@ public class HomePageNonReg extends JFrame
             button1.addActionListener(e -> {
 
 
-                // Modifica il nome della classe a cui vuoi passare il controllo
+
                 MostraconfinguiNREG conferenzagui = new MostraconfinguiNREG();
                 conferenzagui.setVisible(true);
                 dispose();
@@ -71,7 +71,7 @@ public class HomePageNonReg extends JFrame
 
             button2.addActionListener(e -> {
 
-                // Modifica il nome della classe a cui vuoi passare il controllo
+
                 ImmagineProgettoNonReg altraClasse = new ImmagineProgettoNonReg();
                 altraClasse.setVisible(true);
                 dispose();
@@ -98,7 +98,6 @@ public class HomePageNonReg extends JFrame
             JButton button = new JButton(text);
             button.setPreferredSize(new Dimension(150, 70));
 
-            // Aggiungi un ascoltatore per gestire gli eventi del mouse
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent evt) {

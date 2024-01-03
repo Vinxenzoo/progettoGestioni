@@ -12,8 +12,9 @@ import java.util.List;
 public class InterventoDAO
 {
 
-
+    //oggetto che conterrà la connessione al database
     DBConnection dbConnection;
+    //Oggetto controller che consente di far comunicare la classe DAO con la classe Controller
     Controller currcontroller;
     private Statement statement;
 
@@ -24,7 +25,7 @@ public class InterventoDAO
 
     }
 
-
+     //recupera una lista di interventi dalla tabella intervetno del database
     public List<InterventoDTO> recuperaListaintervento() {
         List<InterventoDTO> intervento = new ArrayList<>();
 
@@ -57,7 +58,7 @@ public class InterventoDAO
         return intervento;
     }
 
-
+    //Consente di eliminare dalla tabella intervento un intervento fatto da un partecipante
     public boolean deleteIntervento(Integer codIntervento)
     {
         String query = "DELETE FROM gestioniscientifiche.intervento WHERE cod_intervento = ?";
@@ -80,7 +81,7 @@ public class InterventoDAO
         return false;
     }
 
-
+    //consente di inserire un intervento nella tabella intervento
     public void insinterv(Integer cod_sess, String abs, Integer codice_part)
     {
         String query = "INSERT INTO gestioniscientifiche.intervento (abstract, cod_sessione, cod_partecipante ) VALUES (?, ?, ?)";

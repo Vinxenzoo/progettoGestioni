@@ -11,15 +11,19 @@ import java.sql.Statement;
 
 public class PartecipanteDAO {
     DBConnection dbConnection;
+
+    //Oggetto controller che consente di far comunicare la classe DAO con la classe Controller
     Controller currcontroller;
     private Statement statement;
 
+    //Costruttore che riceve l'oggetto controller
     public PartecipanteDAO(Controller controller) {
         currcontroller = controller;
         dbConnection = DBConnection.getConnessione();
 
     }
 
+    //verifica la presenza del nome e cognome del partecipante all'interno del database
     public boolean verificaPresenza(String nome, String cognome) {
         String query = "SELECT COUNT(*) FROM gestioniscientifiche.partecipante WHERE nome = ? AND cognome = ?";
         try (PreparedStatement preparedStatement = dbConnection.getPreparedStatement(query)) {
@@ -38,6 +42,7 @@ public class PartecipanteDAO {
         return false;
     }
 
+    //consente di inserire all'interno della tabella partecipante
     public void insertPartecipante(PartecipanteDTO partec) {
         String query = "INSERT INTO gestioniscientifiche.partecipante (nome, num_civico, cognome, email, titolo, istituzione, partecipante_s, keynote_speaker, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
 
@@ -61,6 +66,7 @@ public class PartecipanteDAO {
 
     Integer cod_part;
 
+    //verifica se presenti le credenziali di accesso di un partecipante
     public boolean verificacredenzialipartec(String email, String pass) {
         String query = "SELECT * FROM gestioniscientifiche.partecipante WHERE email = ? AND password = ?";
         try (PreparedStatement preparedStatement = dbConnection.getPreparedStatement(query)) {

@@ -32,6 +32,7 @@ public class TenutaDTO
             this.sede = sede;
         }
 
+    //riscrittura del metodo tostring per poterlo utilizzare durante il codice
         @Override
         public String toString() {
             return "TenutaDTO{" +

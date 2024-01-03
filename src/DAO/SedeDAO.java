@@ -13,6 +13,8 @@ import java.util.List;
 
 public class SedeDAO {
     DBConnection dbConnection;
+
+    //Oggetto controller che consente di far comunicare la classe DAO con la classe Controller
     Controller currcontroller;
     private Statement statement;
 
@@ -22,6 +24,7 @@ public class SedeDAO {
 
     }
 
+    //Permette di poter estrarre le sedi dal database
     public SedeDAO leggiSede(int codSede, SedeDTO se)
     {
         try {
@@ -48,6 +51,7 @@ public class SedeDAO {
         return null;
     }
 
+    //consente di recuperare una lista di sedi che poi verranno mostrate nella GUI
     public List<SedeDTO> recuperaListaSede() {
         List<SedeDTO> sede = new ArrayList<>();
 

@@ -132,13 +132,13 @@ public class VisualizzaCommento extends JFrame
 
             try {
 
-                // Sostituisci con il metodo effettivo per ottenere i dati dalla tabella Sessione
+
                 List<CommentoDTO> commlist = co.getListacommento();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codice Feedback", "Descrizione"};
 
-                // Aggiungi le colonne al modello della tabella
+                // Aggiunta le colonne al modello della tabella
                 tableModel.setColumnIdentifiers(columnNames);
 
 
@@ -149,7 +149,7 @@ public class VisualizzaCommento extends JFrame
                     tableModel.addRow(rowData);
                 }
             } catch (Exception e) {
-                // Gestione delle eccezioni, sostituisci con la tua logica di gestione degli errori
+                // Gestione delle eccezioni
                 e.printStackTrace();
             }
 

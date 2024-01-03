@@ -7,8 +7,9 @@ import java.sql.*;
 
 public class CoordinatoreDAO
 {
-
+    //oggetto che conterrà la connessione al database
     DBConnection dbConnection;
+    //Oggetto controller che consente di cfar comunicare la classe DAO con la classe Controller
     Controller currcontroller;
     private Statement statement;
 
@@ -19,7 +20,7 @@ public class CoordinatoreDAO
 
     }
 
-
+    //verifica se un coordinatore è presente nella tabella coordinatore del database
     public boolean verificaPresenzaCoordinatore(String nome, String cognome, String email, String password) {
         try {
             // Preparare la query SQL

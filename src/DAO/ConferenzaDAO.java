@@ -12,7 +12,10 @@ import java.util.*;
 
 public class ConferenzaDAO
 {
+    //oggetto su cui viene stabilita la connessione
     DBConnection dbConnection;
+
+    //Oggetto controller che consente di cfar comunicare la classe DAO con la classe Controller
     Controller currcontroller;
     private Statement statement;
 
@@ -23,7 +26,7 @@ public class ConferenzaDAO
 
     }
 
-
+    //Recupera una lista di conferenze che poi verrà mostrata nella GUI
     public List<ConferenzaDTO> recuperaListaConferenze() {
         List<ConferenzaDTO> Conferenza = new ArrayList<>();
 

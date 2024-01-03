@@ -94,7 +94,7 @@ public class EliminaInAmmOrg extends JFrame
                     // Imposta l'altezza della riga
                     table.setRowHeight(row, 40);
 
-                    // Aggiungi un bordo alle celle
+                    // Aggiunta un bordo alle celle
                     Border border = BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK);
                     ((JComponent) c).setBorder(border);
 
@@ -250,22 +250,22 @@ public class EliminaInAmmOrg extends JFrame
             DefaultTableModel tableModel = new DefaultTableModel();
 
             try {
-                // Ottieni i dati dalla tua connessione e controller
+
                 DBConnection dbConnection = DBConnection.getConnessione();
                 Controller co = new Controller(dbConnection);
 
-                // Sostituisci con il metodo effettivo per ottenere i dati dalla tabella Sessione
+
                 List<AmmissioneDTO> ammlist = co.getListaammissione();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codise Sessione", "Codice Partecipante"};
 
-                // Aggiungi le colonne al modello della tabella
+                // Aggiunge le colonne al modello della tabella
                 tableModel.setColumnIdentifiers(columnNames);
 
                 String no= ""; String cognom = "";
 
-                // Aggiungi i dati al modello della tabella
+                // Aggiunge i dati al modello della tabella
                 for (AmmissioneDTO ammissione : ammlist) {
 
 
@@ -273,7 +273,7 @@ public class EliminaInAmmOrg extends JFrame
                     tableModel.addRow(rowData);
                 }
             } catch (Exception e) {
-                // Gestione delle eccezioni, sostituisci con la tua logica di gestione degli errori
+                // Gestione delle eccezioni,
                 e.printStackTrace();
             }
 
@@ -289,7 +289,7 @@ public class EliminaInAmmOrg extends JFrame
             JButton button = new JButton(text);
             button.setPreferredSize(new Dimension(200, 25));
 
-            // Aggiungi un ascoltatore per gestire gli eventi del mouse
+            // Aggiunta di un ascoltatore per gestire gli eventi del mouse
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent evt) {

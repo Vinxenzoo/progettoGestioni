@@ -233,11 +233,11 @@ public class TabellaInterventoCoo extends JFrame
             DefaultTableModel tableModel = new DefaultTableModel();
 
             try {
-                // Ottieni i dati dalla tua connessione e controller
+
                 DBConnection dbConnection = DBConnection.getConnessione();
                 Controller co = new Controller(dbConnection);
 
-                // Sostituisci con il metodo effettivo per ottenere i dati dalla tabella Sessione
+
                 List<InterventoDTO> interventolist = co.getListaintervento();
 
                 // Colonne della tabella
@@ -248,12 +248,12 @@ public class TabellaInterventoCoo extends JFrame
 
                 // Aggiungi i dati al modello della tabella
                 for (InterventoDTO intervento : interventolist) {
-                    // Sostituisci con i metodi effettivi per ottenere i dati specifici dalla SessioneDTO
+
                     Object[] rowData = {intervento.getCodIntervento(), intervento.getAbstractIntervento(),intervento.getSessione()};
                     tableModel.addRow(rowData);
                 }
             } catch (Exception e) {
-                // Gestione delle eccezioni, sostituisci con la tua logica di gestione degli errori
+                // Gestione delle eccezioni
                 e.printStackTrace();
             }
 

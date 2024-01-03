@@ -30,6 +30,7 @@ public class AmmissioneDTO
         }
 
 
+        //riscrittura del metodo tostring per poterlo utilizzare durante il codice
         @Override
         public String toString() {
             return "AmmissioneDTO{" +
@@ -39,5 +40,3 @@ public class AmmissioneDTO
         }
 }
 
-
-//rivedere fattore keynote speaker e partecipante speciale

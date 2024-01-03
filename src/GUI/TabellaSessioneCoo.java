@@ -282,27 +282,27 @@ public class TabellaSessioneCoo extends JFrame
         DefaultTableModel tableModel = new DefaultTableModel();
 
         try {
-            // Ottieni i dati dalla tua connessione e controller
+
             DBConnection dbConnection = DBConnection.getConnessione();
             Controller co = new Controller(dbConnection);
 
-            // Sostituisci con il metodo effettivo per ottenere i dati dalla tabella Sessione
+
             List<SessioneDTO> sessionelist = co.getListaSessione();
 
             // Colonne della tabella
             String[] columnNames = {"Codise Sessione", "Orario Predefinito ", "Ora Prestabilita", "Codice Conferenza"};
 
-            // Aggiungi le colonne al modello della tabella
+            // Aggiunta le colonne al modello della tabella
             tableModel.setColumnIdentifiers(columnNames);
 
-            // Aggiungi i dati al modello della tabella
+            // Aggiunta i dati al modello della tabella
             for (SessioneDTO sessione : sessionelist) {
                 // Sostituisci con i metodi effettivi per ottenere i dati specifici dalla SessioneDTO
                 Object[] rowData = {sessione.getCodSessione(), sessione.getDataPrestabilita(), sessione.getOrarioPredefinito(), sessione.getConferenza()};
                 tableModel.addRow(rowData);
             }
         } catch (Exception e) {
-            // Gestione delle eccezioni, sostituisci con la tua logica di gestione degli errori
+            // Gestione delle eccezioni
             e.printStackTrace();
         }
 

@@ -10,7 +10,10 @@ import java.util.List;
 
 public class FeedbackDAO
 {
+    //oggetto che conterrà la connessione al database
     DBConnection dbConnection;
+
+    //Oggetto controller che consente di cfar comunicare la classe DAO con la classe Controller
     Controller currcontroller;
     private Statement statement;
 
@@ -21,7 +24,7 @@ public class FeedbackDAO
 
     }
 
-
+   //inserimento di un feedback fatto da parte di un partecipante nella tabella feedback
     public void insertinfeed(Integer cod_interv, String feed, Integer codice_part)
     {
         String query = "INSERT INTO gestioniscientifiche.feedback (feedback, cod_partecipante, cod_intervento ) VALUES (?, ?, ?)";
@@ -40,7 +43,7 @@ public class FeedbackDAO
     }
 
 
-
+    //recupero una lista di feedback che poi verranno motrati nella GUI
     public List<FeedbackDTO> recuperaListaCfeedback() {
         List<FeedbackDTO> feedback = new ArrayList<>();
 

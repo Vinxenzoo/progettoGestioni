@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 public class StatusPanel  extends JFrame
 {
+    //pannello che verà mostrato in caso di successo o insuccesso di un operazione
 
         public StatusPanel(String message, boolean success) {
             setTitle("Status");

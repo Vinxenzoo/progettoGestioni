@@ -11,7 +11,9 @@ import java.util.List;
 
 public class CommentoDAO
 {
+       //oggetto su cui viene stabilita la connessione
         DBConnection dbConnection;
+        //Oggetto controller che consente di cfar comunicare la classe DAO con la classe Controller
         Controller currcontroller;
         private Statement statement;
 
@@ -23,6 +25,7 @@ public class CommentoDAO
 
         }
 
+        //inserisce un commento all'interno della tabella commento del database
     public void insert(Integer cod_feedback, String comm, Integer codice_part)
     {
         String query = "INSERT INTO gestioniscientifiche.commento (commento, cod_partecipante, cod_feedback ) VALUES (?, ?, ?)";
@@ -40,9 +43,7 @@ public class CommentoDAO
         }
     }
 
-
-
-
+    //Recupera una lista di commenti che poi verrà mostrata nella GUI
     public List<CommentoDTO> recuperaListaCommento()
     {
         List<CommentoDTO> commento = new ArrayList<>();

@@ -1,6 +1,8 @@
 package DTO;
 
-public class OccasioneExtraDTO {
+public class OccasioneExtraDTO
+{
+    //attributi di una qualsoasi occasione extra
         private int codOccasione;
         private String tipoEvento;
         private String tipoSpazio;
@@ -62,6 +64,7 @@ public class OccasioneExtraDTO {
             this.descrizione = descrizione;
         }
 
+    //riscrittura del metodo tostring per poterlo utilizzare durante il codice
         @Override
         public String toString() {
             return "OccasioneExtraDTO{" +

@@ -63,7 +63,7 @@ public class SedeDTO {
         this.nome_s= S;
     }
 
-
+    //riscrittura del metodo tostring per poterlo utilizzare durante il codice
     @Override
     public String toString() {
         return "SedeDTO{" +

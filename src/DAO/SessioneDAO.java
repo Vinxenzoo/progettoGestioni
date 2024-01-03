@@ -14,6 +14,8 @@ public class SessioneDAO
 {
 
     DBConnection dbConnection;
+
+    //Oggetto controller che consente di far comunicare la classe DAO con la classe Controller
     Controller currcontroller;
     private Statement statement;
 
@@ -25,7 +27,7 @@ public class SessioneDAO
 
     }
 
-
+    //recupera una llista di sessioni che verranno mostrate poi graficamente
     public List<SessioneDTO> recuperaListaSessione() {
         List<SessioneDTO> sessione = new ArrayList<>();
 

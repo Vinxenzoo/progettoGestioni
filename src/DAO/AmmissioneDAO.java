@@ -11,11 +11,13 @@ import java.util.List;
 public class AmmissioneDAO
 {
 
-   
+   //oggetto che consentira di gestire la connessione al database
     DBConnection dbConnection;
+    //Oggetto controller che consente di cfar comunicare la classe DAO con la classe Controller
     Controller currcontroller;
     private Statement statement;
 
+    //costruttore che ammette l'oggetto controller come parametro
     public AmmissioneDAO(Controller controller)
     {
         currcontroller = controller;
@@ -23,6 +25,7 @@ public class AmmissioneDAO
 
     }
 
+    //inserimento di un'ammissione nella tabella ammissione del database
     public void insert(Integer cod_sed, int cod_partec)
     {
         String query = "INSERT INTO gestioniscientifiche.ammissione (cod_sessione, cod_partecipante) VALUES (?, ?)";
@@ -41,7 +44,7 @@ public class AmmissioneDAO
     }
 
 
-
+   //recupero lista per la GUI
     public List<AmmissioneDTO> recuperaListaAmmissione() {
         List<AmmissioneDTO> ammissione= new ArrayList<>();
 
@@ -71,6 +74,7 @@ public class AmmissioneDAO
         return ammissione;
     }
 
+    //elimina ammissione dalla tabella ammissione del database
     public boolean deleteAmmpartecipante(Integer codAmmp, Integer cod_s)
     {
         String query = "DELETE FROM gestioniscientifiche.ammissione WHERE cod_partecipante = ? AND cod_sessione = ?";

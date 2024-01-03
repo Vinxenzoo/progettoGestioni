@@ -65,7 +65,6 @@ public class HomePageOrg extends JFrame
             button1.addActionListener(e -> {
 
 
-                // Modifica il nome della classe a cui vuoi passare il controllo
                 MostraConfOrg conferenzagui = new MostraConfOrg();
                 conferenzagui.setVisible(true);
                 dispose();
@@ -73,7 +72,7 @@ public class HomePageOrg extends JFrame
 
             button2.addActionListener(e -> {
 
-                // Modifica il nome della classe a cui vuoi passare il controllo
+
                 ImmagineProgettoOrg altraClasse = new ImmagineProgettoOrg();
                 altraClasse.setVisible(true);
                 dispose();
@@ -81,7 +80,6 @@ public class HomePageOrg extends JFrame
 
             button3.addActionListener(e -> {
 
-                // Modifica il nome della classe a cui vuoi passare il controllo
                 TabellaComitato tb = new TabellaComitato();
                tb.setVisible(true);
                 dispose();

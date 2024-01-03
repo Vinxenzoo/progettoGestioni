@@ -13,7 +13,10 @@ import java.util.List;
 
 public class ComitatoDAO
 {
+    //oggettodbConnection consente di stabilire la connessione
     DBConnection dbConnection;
+
+    //Oggetto controller che consente di far comunicare la classe DAO con la classe Controller
     Controller currcontroller;
 
     private Statement statement;
@@ -26,7 +29,7 @@ public class ComitatoDAO
 
     }
 
-
+    //Recupera una lista di comitati che poi verrà mostrata nella GUI
     public List<ComitatoDTO> recuperaListacomitato() {
         List<ComitatoDTO> comitato = new ArrayList<>();
 

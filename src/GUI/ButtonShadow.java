@@ -7,13 +7,15 @@ import java.awt.event.MouseEvent;
 
 public class ButtonShadow extends JButton
 {
+    //questa classe consente di creare bottoni di una dimesione standard che siano con un'ombra dietro.
 
         public static JButton createButtonWithShadow(String text) {
             JButton button = new JButton(text);
             button.setPreferredSize(new Dimension(150, 40));
 
-            // Aggiungi un ascoltatore per gestire gli eventi del mouse
+            // ascoltatore per gestire gli eventi
             button.addMouseListener(new MouseAdapter() {
+                //con questo override posso settare a piacimento l'animazione del bottone
                 @Override
                 public void mouseEntered(MouseEvent evt) {
                     button.setBorder(BorderFactory.createLineBorder(Color.black, 3));
@@ -30,7 +32,7 @@ public class ButtonShadow extends JButton
             // Stile del testo del pulsante
             button.setForeground(Color.BLACK);
 
-            // Rimuovi il bordo standard del pulsante
+            // Rimozione del bordo standard del pulsante
             button.setBorderPainted(true);
             button.setFocusPainted(false);
             button.setContentAreaFilled(false);

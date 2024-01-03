@@ -1,6 +1,9 @@
 package DTO;
 
-public class ComitatoDTO {
+public class ComitatoDTO
+{
+
+        //attributi della classe comitato
         private int codComitato;
         private String tipoC;
         private String nomeC;

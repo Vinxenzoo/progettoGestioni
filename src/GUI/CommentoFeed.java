@@ -95,7 +95,7 @@ public class CommentoFeed extends JFrame
                     // Imposta l'altezza della riga
                     table.setRowHeight(row, 40);
 
-                    // Aggiungi un bordo alle celle
+                    // Aggiunta di un bordo alle celle
                     Border border = BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK);
                     ((JComponent) c).setBorder(border);
 
@@ -105,7 +105,8 @@ public class CommentoFeed extends JFrame
         }
 
         private JPanel createBottomPanel() {
-            // Creazione del pannello in basso con il bottone "Torna alla Home"
+            // Creazione del pannello con il bottone "Torna alla Home"
+            //ogni bottone consente di effettuare una funzionalità diversa
             JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER))
             {
                 @Override
@@ -157,6 +158,7 @@ public class CommentoFeed extends JFrame
         }
 
         private void showPanel() {
+            //consente di creare una nuova finestra più piccola, in parallelo con la finestra grande
             JFrame inputFrame = new JFrame("Inserisci Valori");
             inputFrame.setSize(600, 400);
             inputFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -283,13 +285,13 @@ public class CommentoFeed extends JFrame
 
             try {
 
-                // Sostituisci con il metodo effettivo per ottenere i dati dalla tabella Sessione
+                //  ottenere i dati dalla tabella Sessione
                 List<FeedbackDTO> feedlist = co.getListafeedback();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codice feedback", "Descrizione", "Codice Intervento" };
 
-                // Aggiungi le colonne al modello della tabella
+                // Aggiunta delle colonne al modello della tabella
                 tableModel.setColumnIdentifiers(columnNames);
 
 
@@ -300,7 +302,7 @@ public class CommentoFeed extends JFrame
                     tableModel.addRow(rowData);
                 }
             } catch (Exception e) {
-                // Gestione delle eccezioni, sostituisci con la tua logica di gestione degli errori
+                // Gestione delle eccezioni
                 e.printStackTrace();
             }
 
@@ -315,7 +317,7 @@ public class CommentoFeed extends JFrame
             JButton button = new JButton(text);
             button.setPreferredSize(new Dimension(200, 25));
 
-            // Aggiungi un ascoltatore per gestire gli eventi del mouse
+            //  ascoltatore per gestire gli eventi del mouse
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent evt) {
