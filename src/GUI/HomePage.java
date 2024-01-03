@@ -166,13 +166,6 @@ public class HomePage extends JFrame
         }
 
 
-
-
-    public static void main(String[] args) {
-        // Avvia l'applicazione
-        SwingUtilities.invokeLater(HomePage::new);
-    }
-
     }
 
 

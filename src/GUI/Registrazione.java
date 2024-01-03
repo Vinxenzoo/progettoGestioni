@@ -398,14 +398,6 @@ public class Registrazione extends JFrame
         return new CompoundBorder(line, empty);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            Registrazione loginPage = new Registrazione();
-            loginPage.setVisible(true);
-        });
-    }
-
-
     }
 
 

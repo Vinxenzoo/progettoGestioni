@@ -168,15 +168,6 @@ public class HomePageOrg extends JFrame
             return button;
         }
 
-
-
-
-        public static void main(String[] args)
-        {
-            // Avvia l'applicazione
-            SwingUtilities.invokeLater(GUI.HomePageOrg::new);
-        }
-
 }
 
 
