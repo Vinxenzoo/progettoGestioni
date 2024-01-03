@@ -247,7 +247,7 @@ public class PaginaLogin extends JFrame
       }
       else
       {
-          new StatusPanel("Hai digitato male, o non scritto, nome e cognome", false);
+          new StatusPanel("Credenziali Non Valide", false);
       }
 
     }
