@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AmmissioneDAO
 {
-    //he
+
    
     DBConnection dbConnection;
     Controller currcontroller;
@@ -23,7 +23,6 @@ public class AmmissioneDAO
 
     }
 
-    //la
     public void insert(Integer cod_sed, int cod_partec)
     {
         String query = "INSERT INTO gestioniscientifiche.ammissione (cod_sessione, cod_partecipante) VALUES (?, ?)";
