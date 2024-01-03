@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AmmissioneDAO
 {
-    //hei
+    //he
    
     DBConnection dbConnection;
     Controller currcontroller;
