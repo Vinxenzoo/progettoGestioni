@@ -300,12 +300,6 @@ public class ViewPartecipanti extends JFrame
             return button;
         }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            ViewPartecipanti loginPage = new ViewPartecipanti();
-            loginPage.setVisible(true);
-        });
-    }
 
     }
 
