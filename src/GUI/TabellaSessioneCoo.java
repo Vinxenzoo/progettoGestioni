@@ -344,12 +344,6 @@ public class TabellaSessioneCoo extends JFrame
             return button;
         }
 
-
-    public static void main(String[] args) {
-        // Avvia l'applicazione
-        SwingUtilities.invokeLater(TabellaSessioneCoo::new);
-    }
-
     }
 
 

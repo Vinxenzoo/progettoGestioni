@@ -74,6 +74,8 @@ public class Controller {
 
     public List<SedeDTO> getListaSede() { return sedeDAO.recuperaListaSede();}
 
+    public List<PartecipanteDTO> getListaPartecipante() { return partec.recuperaListaPartecipanti();}
+
     public boolean presenzanome(String no, String co)
     {
 
@@ -180,6 +182,10 @@ public class Controller {
         occasioneExtra.ins( cod_sessione, des, tipo);
     }
 
+    public void rendikeyorspec( Integer cod_part, String rule)
+    {
+        partec.keyorspec(cod_part, rule);
+    }
 
 }
 

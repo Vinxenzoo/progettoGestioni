@@ -137,6 +137,18 @@ public class TabellaSessioneOrg extends JFrame
 
             bottomPanel.add(elimina);
 
+            JButton viewpart = createButtonWithShadow("visualizza partecipanti");
+            viewpart.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Logica per tornare alla Home, ad esempio chiudere questa finestra e aprire la Home
+                    dispose();
+                    new ViewPartecipanti();
+                }
+            });
+
+            bottomPanel.add(viewpart);
+
             return bottomPanel;
         }
 
@@ -206,6 +218,12 @@ public class TabellaSessioneOrg extends JFrame
             return button;
         }
 
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            TabellaInterventoOrg loginPage = new TabellaInterventoOrg();
+            loginPage.setVisible(true);
+        });
+    }
 
 
 }

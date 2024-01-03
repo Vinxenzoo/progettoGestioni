@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PartecipanteDAO {
     DBConnection dbConnection;
@@ -192,6 +194,89 @@ CommentoDAO comm = new CommentoDAO(currcontroller);
             e.printStackTrace(); // Gestisci l'eccezione in modo appropriato
         }
 
+    }
+
+    //recupero una lista di partecipanti
+    public List<PartecipanteDTO> recuperaListaPartecipanti() {
+        List<PartecipanteDTO> partec = new ArrayList<>();
+
+        try {
+            String query = "SELECT * FROM gestioniscientifiche.partecipante";
+            PreparedStatement preparedStatement = dbConnection.getPreparedStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int codpart = resultSet.getInt("cod_partecipante");
+                String nome = resultSet.getString("nome");
+                int num_civico = resultSet.getInt("num_civico");
+                String cognome = resultSet.getString("cognome");
+                String email = resultSet.getString("email");
+                String titolo = resultSet.getString("titolo");
+                String istruzione = resultSet.getString("istituzione");
+                String partec_s = resultSet.getString("partecipante_s");
+                String key = resultSet.getString("keynote_speaker");
+                String pass = resultSet.getString("password");
+
+                PartecipanteDTO pa = new PartecipanteDTO(codpart, nome, num_civico, cognome, email, titolo, istruzione, partec_s, key, pass);
+                partec.add(pa);
+            }
+        } catch (SQLException e) {
+            System.out.println("Errore durante il recupero delle sedi dal DB");
+            e.printStackTrace();
+        }
+        return partec;
+
+    }
+
+    public void keyorspec(Integer cod_p, String rule)
+    {
+        try {
+
+            if (rule == "Keynote Speaker")
+            {
+
+                String query = "update gestioniscientifiche.partecipante\n" +
+                                "set keynote_speaker = 'Si'\n" +
+                                "where cod_partecipante = ?";
+
+                try (PreparedStatement preparedStatement = dbConnection.getPreparedStatement(query)) {
+                    preparedStatement.setInt(1, cod_p);
+
+
+                    preparedStatement.executeUpdate();
+                    System.out.println("Inserimento riuscito");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } else
+            {
+                if (rule == "Partecipante Specifico")
+                {
+
+                    String query = "update gestioniscientifiche.partecipante\n" +
+                            "set partecipante_s = 'Si'\n" +
+                            "where cod_partecipante = ?";
+
+                    try (PreparedStatement preparedStatement = dbConnection.getPreparedStatement(query)) {
+                        preparedStatement.setInt(1, cod_p);
+
+
+                        preparedStatement.executeUpdate();
+                        System.out.println("Inserimento riuscito");
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else
+                {
+                    System.out.println("valore inserito in tipo non valido, riprova");
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println("Non hai inserito nessun valore");
+        }
     }
 
 }

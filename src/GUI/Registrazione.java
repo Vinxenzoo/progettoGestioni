@@ -193,7 +193,7 @@ public class Registrazione extends JFrame
         //Partecipante speciale
         gbc.gridx = 2;
         gbc.gridy++;
-        JLabel Partec_s = new JLabel("Specifico? ");
+        JLabel Partec_s = new JLabel("Specifico: ");
         Partec_s.setFont(labelFont);
         bounceEffect(Partec_s);
         Partec_s.setForeground(Color.orange);
@@ -209,7 +209,7 @@ public class Registrazione extends JFrame
         //Partecipante speciale
         gbc.gridx = 2;
         gbc.gridy++;
-        JLabel Keynote = new JLabel("Keynote? ");
+        JLabel Keynote = new JLabel("Keynote: ");
         Keynote.setFont(labelFont);
         bounceEffect(Keynote);
         Keynote.setForeground(Color.orange);
