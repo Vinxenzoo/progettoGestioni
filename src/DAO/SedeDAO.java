@@ -18,7 +18,8 @@ public class SedeDAO {
     Controller currcontroller;
     private Statement statement;
 
-    public SedeDAO(Controller controller) {
+    public SedeDAO(Controller controller)
+    {
         currcontroller = controller;
         dbConnection = DBConnection.getConnessione();
 

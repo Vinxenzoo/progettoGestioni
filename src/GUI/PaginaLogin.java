@@ -236,7 +236,6 @@ public class PaginaLogin extends JFrame
       {
           if (controller.accesso(email, password)) {
 
-              new StatusPanel("Accesso Riuscito", true);
               dispose();
               new HomePage();
           }

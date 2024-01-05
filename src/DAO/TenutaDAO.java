@@ -19,7 +19,6 @@ import java.sql.Statement;
         currcontroller = controller;
         dbConnection = DBConnection.getConnessione();
 
-
     }
 
 

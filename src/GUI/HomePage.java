@@ -166,6 +166,12 @@ public class HomePage extends JFrame
         }
 
 
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            HomePage loginPage = new HomePage();
+            loginPage.setVisible(true);
+        });
+    }
     }
 
 

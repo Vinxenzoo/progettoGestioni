@@ -144,11 +144,16 @@ public class Controller {
 
     }
 
-    public void insertinammissione (Integer cod_sess, String email)
+    public void presenzapartecnammissione (Integer cod_sess, String email)
     {
 
         partec.verificaAmminp(  email, cod_sess);
-        System.out.println("valore codice part: "+ email );
+    }
+
+    public void insertinammissione (Integer cod_sess, Integer cod_part)
+    {
+
+        ammissione.insert(cod_sess, cod_part);
     }
 
     public void cancellai (Integer cod_i)
@@ -162,20 +167,37 @@ public class Controller {
     {
 
         partec.lasciaf( cod_intervento, feed, email);
-        System.out.println("valore codice part: "+ email );
     }
+
+    public void insertfeed(Integer cod_intervento, String feed, Integer cod_part)
+    {
+
+        feedback.insertinfeed(cod_intervento, feed, cod_part);
+    }
+
 
     public void lasciacommento(Integer cod_feedback, String commento, String email)
     {
 
         partec.lasciacomm( cod_feedback, commento, email);
-        System.out.println("valore codice part: "+ email );
+    }
+
+    public void insertcommento(Integer cod_feedback, String comment, Integer cod_part)
+    {
+
+        commento.insert(cod_feedback, comment, cod_part);
     }
 
     public void insinter (Integer cod_sessione, String abs, String email)
     {
         partec.vainterv( cod_sessione, abs, email);
     }
+
+    public void insertintervento (Integer cod_sessione, String abs, Integer cod_part)
+    {
+        intervento.insinterv(cod_sessione, abs, cod_part);
+    }
+
 
     public void inse_occ_ex (Integer cod_sessione, String des, String tipo)
     {

@@ -66,7 +66,6 @@ public class PartecipanteDAO {
         }
     }
 
-    Integer cod_part;
 
     //verifica se presenti le credenziali di accesso di un partecipante
     public boolean verificacredenzialipartec(String email, String pass) {
@@ -89,7 +88,6 @@ public class PartecipanteDAO {
 
 
     Integer codice_part;
-    AmmissioneDAO am = new AmmissioneDAO(currcontroller);
 
     public void verificaAmminp(String email, Integer cod_sess) {
         System.out.println("valore codice part: " + email);
@@ -100,7 +98,7 @@ public class PartecipanteDAO {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     codice_part = resultSet.getInt("cod_partecipante");
-                    am.insert(cod_sess, codice_part);
+                    currcontroller.insertinammissione(cod_sess, codice_part);
                 }
             }
         } catch (SQLException e) {
@@ -109,29 +107,8 @@ public class PartecipanteDAO {
     }
 
 
-    public boolean presenzaChiave(PartecipanteDTO par, String no, String co) {
-        String query = "SELECT cod_partecipante, nome, cognome  FROM gestioniscientifiche.partecipante WHERE cod_partecipante = ?";
-        try (PreparedStatement preparedStatement = dbConnection.getPreparedStatement(query)) {
-            preparedStatement.setInt(1, par.getCodPartecipante());
 
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
-                    no = resultSet.getString("nome");
-                    co = resultSet.getString("cognome");
 
-                    PartecipanteDTO partec = new PartecipanteDTO(no, co);
-
-                    int count = resultSet.getInt(1);
-                    return count > 0;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Gestisci l'eccezione in modo appropriato
-        }
-        return false;
-    }
-
-    FeedbackDAO fe = new FeedbackDAO(currcontroller);
 
     public void lasciaf(Integer cod_interv, String feed, String email) {
         System.out.println("valore codice part: " + email);
@@ -143,7 +120,7 @@ public class PartecipanteDAO {
                 if (resultSet.next()) {
                     codice_part = resultSet.getInt("cod_partecipante");
                     System.out.println(" codice partecipante: " + codice_part);
-                    fe.insertinfeed(cod_interv, feed, codice_part);
+                    currcontroller.insertfeed(cod_interv, feed, codice_part);
                 }
             }
         } catch (SQLException e) {
@@ -152,7 +129,6 @@ public class PartecipanteDAO {
 
     }
 
-    InterventoDAO in = new InterventoDAO(currcontroller);
 
     public void   vainterv(Integer cod_sess, String abs, String email) {
         System.out.println("valore codice part: " + email);
@@ -164,7 +140,7 @@ public class PartecipanteDAO {
                 if (resultSet.next()) {
                     codice_part = resultSet.getInt("cod_partecipante");
                     System.out.println(" codice partecipante: " + codice_part);
-                    in.insinterv(cod_sess, abs, codice_part);
+                    currcontroller.insertintervento(cod_sess, abs, codice_part);
                 }
             }
         } catch (SQLException e) {
@@ -174,8 +150,6 @@ public class PartecipanteDAO {
 
     }
 
-
-CommentoDAO comm = new CommentoDAO(currcontroller);
 
     public void  lasciacomm( Integer cod_feed, String commento, String email) {
         System.out.println("valore codice part: " + email);
@@ -187,7 +161,7 @@ CommentoDAO comm = new CommentoDAO(currcontroller);
                 if (resultSet.next()) {
                     codice_part = resultSet.getInt("cod_partecipante");
                     System.out.println(" codice partecipante: " + codice_part);
-                    comm.insert(cod_feed, commento, codice_part);
+                   currcontroller.insertcommento(cod_feed, commento, codice_part);
                 }
             }
         } catch (SQLException e) {

@@ -228,7 +228,6 @@ public class PaginaLoginOrgeCoo extends JFrame
             {
                 if (controller.accessocoo(nome, cognome, email, password))
                 {
-                    new StatusPanel("Accesso Riuscito", true);
 
                     dispose();
 

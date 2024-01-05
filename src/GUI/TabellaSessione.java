@@ -217,7 +217,7 @@ public class TabellaSessione extends JFrame {
                     String email = emailtext.getText();
 
                    if(!email.isEmpty()) {
-                       co.insertinammissione(value, email);
+                       co.presenzapartecnammissione(value, email);
 
                        new StatusPanel("Operazione andata a buon fine", true);
 
