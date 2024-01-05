@@ -218,12 +218,6 @@ public class TabellaSessioneOrg extends JFrame
             return button;
         }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            TabellaInterventoOrg loginPage = new TabellaInterventoOrg();
-            loginPage.setVisible(true);
-        });
-    }
 
 
 }
