@@ -369,7 +369,7 @@ public class Registrazione extends JFrame
         Timer timer = new Timer(130, new ActionListener() {
             int deltaY = 1;
             int direction = 4;
-            int countDown = 1000;
+            int countDown = 10000;
 
             @Override
             public void actionPerformed(ActionEvent e) {
