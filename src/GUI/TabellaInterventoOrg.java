@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.InterventoDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -19,8 +18,11 @@ public class TabellaInterventoOrg extends JFrame
 {
         private JTable table;
 
-        public TabellaInterventoOrg()
+        private Controller curr;
+
+        public TabellaInterventoOrg(Controller currcontroller)
         {
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -120,7 +122,7 @@ public class TabellaInterventoOrg extends JFrame
                 public void actionPerformed(ActionEvent e)
                 {
                     dispose();
-                    new HomePageOrg();
+                    new HomePageOrg(curr);
 
                 }
             });
@@ -135,11 +137,8 @@ public class TabellaInterventoOrg extends JFrame
 
             try {
 
-                DBConnection dbConnection = DBConnection.getConnessione();
-                Controller co = new Controller(dbConnection);
 
-
-                List<InterventoDTO> interventolist = co.getListaintervento();
+                List<InterventoDTO> interventolist = curr.getListaintervento();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codice Intervento", "Descrizione  ", "Codice Sessione"};

@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.PartecipanteDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -32,10 +31,11 @@ public class Registrazione extends JFrame
     private JTextField Keynotefield;
     private JPasswordField passwordField;
 
+    private Controller curr;
 
-    private JPanel sinusoidPanel;
-
-    public Registrazione() {
+    public Registrazione(Controller currcontroller)
+    {
+        this.curr = currcontroller;
         JPanel mainPanel = new JPanel(new BorderLayout()) {
             @Override
             protected void paintComponent(Graphics g) {
@@ -281,7 +281,7 @@ public class Registrazione extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new HomePageNonReg();
+                new HomePageNonReg(curr);
             }
         });
         Button.setForeground(Color.blue);
@@ -310,10 +310,6 @@ public class Registrazione extends JFrame
         String password = new String(passwordField.getPassword());
         String email = emailField.getText();
 
-        // Verifica le credenziali nel database
-        DBConnection dbConnection = DBConnection.getConnessione();
-        Controller controller = new Controller(dbConnection);
-
 
         PartecipanteDTO parteci = new PartecipanteDTO(nome, intvalue, cognome, email, tit, istr, partec, keynote, password);
 
@@ -328,9 +324,9 @@ public class Registrazione extends JFrame
                         if(!parteci.getPassword().isEmpty())
                         {
 
-                            if (controller.verifica(parteci)) {
+                            if (curr.verifica(parteci)) {
                                 new StatusPanel("Registrazione effettuata, adesso effettua il login", true);
-                                new PaginaLogin();
+                                //new PaginaLogin();
                             } else {
                                 new StatusPanel("Credenziali Errate", false);
                             }

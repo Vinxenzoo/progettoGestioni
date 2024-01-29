@@ -22,7 +22,11 @@ public class PaginaLogin extends JFrame
 
         private JPasswordField passwordField;
 
-        public PaginaLogin() {
+        private Controller curr;
+
+        public PaginaLogin(Controller currcontroller)
+        {
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -193,7 +197,7 @@ public class PaginaLogin extends JFrame
                 link1.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
 
-                        HomePageNonReg ho = new HomePageNonReg();
+                        HomePageNonReg ho = new HomePageNonReg(curr);
                         ho.setVisible(true);
                     }
                 });
@@ -209,7 +213,7 @@ public class PaginaLogin extends JFrame
                 link2.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
 
-                        PaginaLoginOrgeCoo pag = new PaginaLoginOrgeCoo();  // Assicurati di avere una classe HomePage
+                        PaginaLoginOrgeCoo pag = new PaginaLoginOrgeCoo(curr);  // Assicurati di avere una classe HomePage
                         pag.setVisible(true);
                     }
                 });
@@ -228,16 +232,19 @@ public class PaginaLogin extends JFrame
         String password = new String(passwordField.getPassword());
 
         // Verifica le credenziali nel database
-        DBConnection dbConnection = DBConnection.getConnessione();
-        Controller controller = new Controller(dbConnection);
+
+      /*    DBConnection dbConnection = DBConnection.getConnessione();
+      Controller controller = new Controller(dbConnection);
+
+       */
 
 
-      if(controller.presenzanome(nome, cognome))
+      if(curr.presenzanome(nome, cognome))
       {
-          if (controller.accesso(email, password)) {
+          if (curr.accesso(email, password)) {
 
               dispose();
-              new HomePage();
+              new HomePage(curr);
           }
           else
           {
@@ -253,7 +260,7 @@ public class PaginaLogin extends JFrame
 
         private void openPage1() {
           //  JOptionPane.showMessageDialog(this, "Apro la pagina corrispondente al Link 1");
-            HomePageNonReg home = new HomePageNonReg();
+            HomePageNonReg home = new HomePageNonReg(curr);
             home.setVisible(true);
         }
 
@@ -296,25 +303,4 @@ public class PaginaLogin extends JFrame
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,14 +1,17 @@
 package GUI;
 
+import UTILITIES.Controller;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class HomePageCoo extends JFrame
 {
-
-        public HomePageCoo()
+        private Controller curr;
+        public HomePageCoo(Controller currcontroller)
         {
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -65,14 +68,14 @@ public class HomePageCoo extends JFrame
 
 
 
-                MostraConfCoo conferenzagui = new MostraConfCoo();
+                MostraConfCoo conferenzagui = new MostraConfCoo(curr);
                 conferenzagui.setVisible(true);
                 dispose();
             });
 
             button2.addActionListener(e -> {
 
-                ImmagineProgettoCoo altraClasse = new ImmagineProgettoCoo();
+                ImmagineProgettoCoo altraClasse = new ImmagineProgettoCoo(curr);
                 altraClasse.setVisible(true);
                 dispose();
             });
@@ -80,7 +83,7 @@ public class HomePageCoo extends JFrame
             button3.addActionListener(e ->
             {
 
-               TabellaComitatoCoo altraClasse = new TabellaComitatoCoo();
+               TabellaComitatoCoo altraClasse = new TabellaComitatoCoo(curr);
                altraClasse.setVisible(true);
                 dispose();
             });

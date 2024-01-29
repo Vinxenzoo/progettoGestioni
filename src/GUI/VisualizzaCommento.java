@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.CommentoDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -18,11 +17,12 @@ import java.util.List;
 public class VisualizzaCommento extends JFrame
 {
 
-        DBConnection dbConnection = DBConnection.getConnessione();
-        Controller co = new Controller(dbConnection);
+        private Controller curr;
         private JTable table;
 
-        public VisualizzaCommento() {
+        public VisualizzaCommento(Controller currcontroller)
+        {
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -121,7 +121,7 @@ public class VisualizzaCommento extends JFrame
                 public void actionPerformed(ActionEvent e)
                 {
                     dispose();
-                    new CommentoFeed();
+                    new CommentoFeed(curr);
                 }
             });
              bottomPanel.add(homebutton);
@@ -133,7 +133,7 @@ public class VisualizzaCommento extends JFrame
             try {
 
 
-                List<CommentoDTO> commlist = co.getListacommento();
+                List<CommentoDTO> commlist = curr.getListacommento();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codice Feedback", "Descrizione"};

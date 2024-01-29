@@ -1,5 +1,7 @@
 package GUI;
 
+import UTILITIES.Controller;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -7,7 +9,9 @@ import java.awt.event.MouseEvent;
 
 public class HomePageNonReg extends JFrame
 {
-        public HomePageNonReg() {
+    private Controller curr;
+        public HomePageNonReg(Controller currcontroller) {
+            this.curr = currcontroller;
             // Creazione del pannello principale
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
@@ -64,7 +68,7 @@ public class HomePageNonReg extends JFrame
 
 
 
-                MostraconfinguiNREG conferenzagui = new MostraconfinguiNREG();
+                MostraconfinguiNREG conferenzagui = new MostraconfinguiNREG(curr);
                 conferenzagui.setVisible(true);
                 dispose();
             });
@@ -72,20 +76,20 @@ public class HomePageNonReg extends JFrame
             button2.addActionListener(e -> {
 
 
-                ImmagineProgettoNonReg altraClasse = new ImmagineProgettoNonReg();
+                ImmagineProgettoNonReg altraClasse = new ImmagineProgettoNonReg(curr);
                 altraClasse.setVisible(true);
                 dispose();
             });
 
             button3.addActionListener(e -> {
-                    Registrazione Reg = new Registrazione();
+                    Registrazione Reg = new Registrazione(curr);
                     Reg.setVisible(true);
                     dispose();
 
                     });
             button4.addActionListener(e -> {
 
-                PaginaLogin pag = new PaginaLogin();
+                PaginaLogin pag = new PaginaLogin(curr);
                 pag.setVisible(true);
                 dispose();
 

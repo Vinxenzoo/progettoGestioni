@@ -1,5 +1,7 @@
 package GUI;
 
+import UTILITIES.Controller;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,8 +9,11 @@ import java.awt.event.ActionListener;
 
 public class ImmagineProgettoCoo extends JFrame
 {
+    private Controller curr;
 
-        public ImmagineProgettoCoo() {
+        public ImmagineProgettoCoo(Controller currcontroller)
+        {
+            this.curr = currcontroller;
             // Creazione del pannello principale
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
@@ -32,7 +37,7 @@ public class ImmagineProgettoCoo extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     // Chiudi l'attuale finestra e crea una nuova HomePage
                     dispose();
-                    new HomePageCoo();
+                    new HomePageCoo(curr);
                 }
             });
 

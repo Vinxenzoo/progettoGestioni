@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.AmmissioneDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -17,11 +16,12 @@ import java.util.List;
 
 public class EliminaInAmmOrg extends JFrame
 {
-
         private JTable table;
+        private Controller curr;
 
-        public EliminaInAmmOrg()
+        public EliminaInAmmOrg(Controller currcontroller)
         {
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -121,7 +121,7 @@ public class EliminaInAmmOrg extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     // Logica per tornare alla Home, ad esempio chiudere questa finestra e aprire la Home
                     dispose();
-                    new TabellaSessioneOrg();
+                    new TabellaSessioneOrg(curr);
                 }
             });
 
@@ -202,10 +202,6 @@ public class EliminaInAmmOrg extends JFrame
             sestext.setFont(labelFont);
             inputPanel.add(sestext, gbc);
 
-
-            DBConnection dbConnection = DBConnection.getConnessione();
-            Controller co = new Controller(dbConnection);
-
             JButton confirmButton = createButtonWithShadow("Conferma");
             confirmButton.addActionListener(new ActionListener() {
                 @Override
@@ -221,12 +217,12 @@ public class EliminaInAmmOrg extends JFrame
                         Integer sesvalue = Integer.valueOf(ses);
 
 
-                        co.cancellap(value, sesvalue);
+                        curr.cancellap(value, sesvalue);
 
 
                         new StatusPanel("Operazione andata a buon fine", true);
 
-                        new TabellaSessioneOrg();
+                        new TabellaSessioneOrg(curr);
                     } catch (NumberFormatException ex)
                     {
                         // Se il valore non è un intero valido
@@ -251,11 +247,8 @@ public class EliminaInAmmOrg extends JFrame
 
             try {
 
-                DBConnection dbConnection = DBConnection.getConnessione();
-                Controller co = new Controller(dbConnection);
 
-
-                List<AmmissioneDTO> ammlist = co.getListaammissione();
+                List<AmmissioneDTO> ammlist = curr.getListaammissione();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codise Sessione", "Codice Partecipante"};

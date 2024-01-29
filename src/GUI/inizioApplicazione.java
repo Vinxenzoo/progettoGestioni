@@ -7,12 +7,12 @@ import javax.swing.*;
 
 public class inizioApplicazione
 {
-    DBConnection dbconnection = DBConnection.getConnessione();
-     Controller currcontroller = new Controller(dbconnection);
+    static DBConnection dbconnection = DBConnection.getConnessione();
+    static Controller currcontroller = new Controller(dbconnection);
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            PaginaLogin loginPage = new PaginaLogin();
+            PaginaLogin loginPage = new PaginaLogin(currcontroller);
             loginPage.setVisible(true);
         });
     }

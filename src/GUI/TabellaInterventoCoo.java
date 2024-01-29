@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.InterventoDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -20,8 +19,11 @@ public class TabellaInterventoCoo extends JFrame
 
         private JTable table;
 
-        public TabellaInterventoCoo()
+        private Controller curr;
+
+        public TabellaInterventoCoo(Controller currcontroller)
         {
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -133,7 +135,7 @@ public class TabellaInterventoCoo extends JFrame
                 public void actionPerformed(ActionEvent e)
                 {
                     dispose();
-                    new HomePageCoo();
+                    new HomePageCoo(curr);
 
                 }
             });
@@ -190,10 +192,6 @@ public class TabellaInterventoCoo extends JFrame
         text.setFont(labelFont);
         inputPanel.add(text, gbc);
 
-
-        DBConnection dbConnection = DBConnection.getConnessione();
-        Controller co = new Controller(dbConnection);
-
         JButton confirmButton = createButtonWithShadow("Conferma");
         confirmButton.addActionListener(new ActionListener() {
             @Override
@@ -206,12 +204,12 @@ public class TabellaInterventoCoo extends JFrame
                     Integer value = Integer.valueOf(valuetext);
 
 
-                        co.cancellai(value);
+                        curr.cancellai(value);
 
                     new StatusPanel("Operazione andata a buon fine", true);
                         dispose();
 
-                    new TabellaInterventoCoo();
+                    new TabellaInterventoCoo(curr);
                 } catch (NumberFormatException ex)
                 {
                     // Se il valore non è un intero valido
@@ -234,11 +232,8 @@ public class TabellaInterventoCoo extends JFrame
 
             try {
 
-                DBConnection dbConnection = DBConnection.getConnessione();
-                Controller co = new Controller(dbConnection);
 
-
-                List<InterventoDTO> interventolist = co.getListaintervento();
+                List<InterventoDTO> interventolist = curr.getListaintervento();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codice Intervento", "Descrizione  ", "Codice Sessione"};

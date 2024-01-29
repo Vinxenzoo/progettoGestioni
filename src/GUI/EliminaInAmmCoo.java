@@ -18,8 +18,11 @@ public class EliminaInAmmCoo extends JFrame
 {
         private JTable table;
 
-        public EliminaInAmmCoo()
+        private Controller curr;
+
+        public EliminaInAmmCoo(Controller currcontroller)
         {
+            this.curr =currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -119,7 +122,7 @@ public class EliminaInAmmCoo extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     // Logica per tornare alla Home, ad esempio chiudere questa finestra e aprire la Home
                     dispose();
-                    new TabellaSessioneCoo();
+                    new TabellaSessioneCoo(curr);
                 }
             });
 
@@ -223,7 +226,7 @@ public class EliminaInAmmCoo extends JFrame
 
                     new StatusPanel("Operazione andata a buon fine", true);
 
-                    new TabellaSessioneCoo();
+                    new TabellaSessioneCoo(curr);
                 } catch (NumberFormatException ex)
                 {
                     // Se il valore non è un intero valido
@@ -248,11 +251,8 @@ public class EliminaInAmmCoo extends JFrame
 
             try {
 
-                DBConnection dbConnection = DBConnection.getConnessione();
-                Controller co = new Controller(dbConnection);
 
-
-                List<AmmissioneDTO> ammlist = co.getListaammissione();
+                List<AmmissioneDTO> ammlist = curr.getListaammissione();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codise Sessione", "Codice Partecipante"};

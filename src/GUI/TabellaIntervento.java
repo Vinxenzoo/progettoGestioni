@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.InterventoDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -19,7 +18,11 @@ public class TabellaIntervento extends JFrame
 {
         private JTable table;
 
-        public TabellaIntervento() {
+        private Controller curr;
+
+        public TabellaIntervento(Controller currcontroller)
+        {
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -119,7 +122,7 @@ public class TabellaIntervento extends JFrame
                 public void actionPerformed(ActionEvent e)
                 {
                     dispose();
-                    new CommentoFeed();
+                    new CommentoFeed(curr);
 
                 }
             });
@@ -226,10 +229,6 @@ public class TabellaIntervento extends JFrame
         emtext.setFont(labelFont);
         inputPanel.add(emtext, gbc);
 
-
-        DBConnection dbConnection = DBConnection.getConnessione();
-        Controller co = new Controller(dbConnection);
-
         JButton confirmButton = createButtonWithShadow("Conferma");
         confirmButton.addActionListener(new ActionListener() {
             @Override
@@ -249,12 +248,12 @@ public class TabellaIntervento extends JFrame
                         if (!ema.isEmpty())
                         {
 
-                            co.lasciaf(value, ab, ema);
+                            curr.lasciaf(value, ab, ema);
 
                             new StatusPanel("Operazione andata a buon fine", true);
                             dispose();
 
-                            new TabellaIntervento();
+                            new TabellaIntervento(curr);
                         }
                         else
                         {
@@ -355,10 +354,6 @@ public class TabellaIntervento extends JFrame
         emtext.setFont(labelFont);
         inputPanel.add(emtext, gbc);
 
-
-        DBConnection dbConnection = DBConnection.getConnessione();
-        Controller co = new Controller(dbConnection);
-
         JButton confirmButton = createButtonWithShadow("Conferma");
         confirmButton.addActionListener(new ActionListener() {
             @Override
@@ -378,12 +373,12 @@ public class TabellaIntervento extends JFrame
                    if (!ema.isEmpty())
                    {
 
-                       co.insinter(value, ab, ema);
+                       curr.insinter(value, ab, ema);
 
                        new StatusPanel("Operazione andata a buon fine", true);
                        dispose();
 
-                       new TabellaIntervento();
+                       new TabellaIntervento(curr);
                    }
                    else
                    {
@@ -419,11 +414,7 @@ public class TabellaIntervento extends JFrame
 
             try {
 
-                DBConnection dbConnection = DBConnection.getConnessione();
-                Controller co = new Controller(dbConnection);
-
-
-                List<InterventoDTO> interventolist = co.getListaintervento();
+                List<InterventoDTO> interventolist = curr.getListaintervento();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codice Intervento", "Descrizione  ", "Codice Sessione"};

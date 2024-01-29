@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.SessioneDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -20,7 +19,11 @@ public class TabellaSessioneOrg extends JFrame
 
         private JTable table;
 
-        public TabellaSessioneOrg() {
+        private Controller curr;
+
+        public TabellaSessioneOrg(Controller currcontroller)
+        {
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -119,7 +122,7 @@ public class TabellaSessioneOrg extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     // Logica per tornare alla Home, ad esempio chiudere questa finestra e aprire la Home
                     dispose();
-                    new HomePageOrg();  // Assumendo che HomePage sia la classe per la tua home page
+                    new HomePageOrg(curr);  // Assumendo che HomePage sia la classe per la tua home page
                 }
             });
 
@@ -131,7 +134,7 @@ public class TabellaSessioneOrg extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     // Logica per tornare alla Home, ad esempio chiudere questa finestra e aprire la Home
                     dispose();
-                    new EliminaInAmmOrg();  // Assumendo che HomePage sia la classe per la tua home page
+                    new EliminaInAmmOrg(curr);  // Assumendo che HomePage sia la classe per la tua home page
                 }
             });
 
@@ -143,7 +146,7 @@ public class TabellaSessioneOrg extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     // Logica per tornare alla Home, ad esempio chiudere questa finestra e aprire la Home
                     dispose();
-                    new ViewPartecipanti();
+                    new ViewPartecipanti(curr);
                 }
             });
 
@@ -157,11 +160,7 @@ public class TabellaSessioneOrg extends JFrame
 
             try {
 
-                DBConnection dbConnection = DBConnection.getConnessione();
-                Controller co = new Controller(dbConnection);
-
-
-                List<SessioneDTO> sessionelist = co.getListaSessione();
+                List<SessioneDTO> sessionelist = curr.getListaSessione();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codise Sessione", "Orario Predefinito ", "Ora Prestabilita", "Codice Conferenza"};

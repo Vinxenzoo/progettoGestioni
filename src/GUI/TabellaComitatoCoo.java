@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.ComitatoDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -20,8 +19,11 @@ public class TabellaComitatoCoo extends JFrame
 {
         private JTable table;
 
-        public TabellaComitatoCoo()
+        private Controller curr;
+
+        public TabellaComitatoCoo(Controller currcontroller)
         {
+            this.curr= currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -121,7 +123,7 @@ public class TabellaComitatoCoo extends JFrame
                 public void actionPerformed(ActionEvent e) {
 
                     dispose();
-                    new TabellaInterventoCoo();
+                    new TabellaInterventoCoo(curr);
                 }
             });
 
@@ -133,7 +135,7 @@ public class TabellaComitatoCoo extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     // Logica per tornare alla Home, ad esempio chiudere questa finestra e aprire la Home
                     dispose();
-                    new HomePageCoo();
+                    new HomePageCoo(curr);
                 }
             });
 
@@ -147,11 +149,8 @@ public class TabellaComitatoCoo extends JFrame
 
             try {
 
-                DBConnection dbConnection = DBConnection.getConnessione();
-                Controller co = new Controller(dbConnection);
 
-
-                List<ComitatoDTO> comlist = co.getListacomitato();
+                List<ComitatoDTO> comlist = curr.getListacomitato();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codice Comitato", "Nome Comitato"};

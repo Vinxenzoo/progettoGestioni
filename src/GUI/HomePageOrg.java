@@ -1,5 +1,7 @@
 package GUI;
 
+import UTILITIES.Controller;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -7,9 +9,10 @@ import java.awt.event.*;
 public class HomePageOrg extends JFrame
 {
 
-
-        public HomePageOrg()
+        private Controller curr;
+        public HomePageOrg(Controller currcontroller)
         {
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -65,7 +68,7 @@ public class HomePageOrg extends JFrame
             button1.addActionListener(e -> {
 
 
-                MostraConfOrg conferenzagui = new MostraConfOrg();
+                MostraConfOrg conferenzagui = new MostraConfOrg(curr);
                 conferenzagui.setVisible(true);
                 dispose();
             });
@@ -73,14 +76,14 @@ public class HomePageOrg extends JFrame
             button2.addActionListener(e -> {
 
 
-                ImmagineProgettoOrg altraClasse = new ImmagineProgettoOrg();
+                ImmagineProgettoOrg altraClasse = new ImmagineProgettoOrg(curr);
                 altraClasse.setVisible(true);
                 dispose();
             });
 
             button3.addActionListener(e -> {
 
-                TabellaComitato tb = new TabellaComitato();
+                TabellaComitato tb = new TabellaComitato(curr);
                tb.setVisible(true);
                 dispose();
             });

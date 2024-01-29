@@ -1,12 +1,17 @@
 package GUI;
 
+import UTILITIES.Controller;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class HomePage extends JFrame
 {
-        public HomePage() {
+    private Controller curr;
+        public HomePage(Controller currcontroller) {
+
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -61,7 +66,7 @@ public class HomePage extends JFrame
             // Aggiunta di azioni ai bottoni
             button1.addActionListener(e -> {
 
-                           Mostraconfingui conferenzagui = new Mostraconfingui();
+                           Mostraconfingui conferenzagui = new Mostraconfingui(curr);
                             conferenzagui.setVisible(true);
                             dispose();
                         });
@@ -69,7 +74,7 @@ public class HomePage extends JFrame
             button2.addActionListener(e -> {
 
 
-                ImmagineProgetto altraClasse = new ImmagineProgetto();
+                ImmagineProgetto altraClasse = new ImmagineProgetto(curr);
                 altraClasse.setVisible(true);
                 dispose();
             });
@@ -77,7 +82,7 @@ public class HomePage extends JFrame
             button3.addActionListener(e ->{
 
 
-                TabellaIntervento tb = new TabellaIntervento();
+                TabellaIntervento tb = new TabellaIntervento(curr);
                 tb.setVisible(true);
                 dispose();
             });
@@ -164,14 +169,6 @@ public class HomePage extends JFrame
 
             return button;
         }
-
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            HomePage loginPage = new HomePage();
-            loginPage.setVisible(true);
-        });
-    }
     }
 
 

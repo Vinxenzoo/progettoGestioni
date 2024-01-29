@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.ConferenzaDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,11 +12,14 @@ import java.awt.event.MouseEvent;
 
 public class MostraconfinguiNREG extends JFrame
 {
+    private Controller curr;
 
         private JComboBox<String> conferenzaComboBox;
         private DefaultComboBoxModel<String> conferenzaComboBoxModel;
 
-        public MostraconfinguiNREG() {
+        public MostraconfinguiNREG(Controller currcontroller)
+        {
+            this.curr = currcontroller;
             // Creazione del pannello principale
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
@@ -98,7 +100,7 @@ public class MostraconfinguiNREG extends JFrame
                 public void actionPerformed(ActionEvent e)
                 {
                     dispose();
-                    new HomePageNonReg();
+                    new HomePageNonReg(curr);
                 }
             });
             loginButton.setForeground(Color.BLUE);
@@ -175,11 +177,7 @@ public class MostraconfinguiNREG extends JFrame
         private void updateConferenzaComboBox()
         {
 
-            DBConnection dbConnection = new DBConnection();
-            Controller controller = new Controller(dbConnection);
-
-
-            java.util.List<ConferenzaDTO> listaConferenze = controller.getListaConferenze();
+            java.util.List<ConferenzaDTO> listaConferenze = curr.getListaConferenze();
 
             // Pulisci il modello della JComboBox
             conferenzaComboBoxModel.removeAllElements();

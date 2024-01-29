@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.PartecipanteDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -20,10 +19,13 @@ public class ViewPartecipanti extends JFrame
 
         private JTable table;
 
+        private Controller curr;
+
         private JComboBox<String> ruoloComboBox;
 
-        public ViewPartecipanti()
+        public ViewPartecipanti(Controller currcontroller)
         {
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -123,7 +125,7 @@ public class ViewPartecipanti extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     // Logica per tornare alla Home, ad esempio chiudere questa finestra e aprire la Home
                     dispose();
-                    new TabellaSessioneOrg();
+                    new TabellaSessioneOrg(curr);
                 }
             });
 
@@ -192,10 +194,6 @@ public class ViewPartecipanti extends JFrame
             text.setFont(labelFont);
             inputPanel.add(text, gbc);
 
-
-            DBConnection dbConnection = DBConnection.getConnessione();
-            Controller co = new Controller(dbConnection);
-
             JButton confirmButton = createButtonWithShadow("Conferma");
             confirmButton.addActionListener(new ActionListener() {
                 @Override
@@ -208,12 +206,12 @@ public class ViewPartecipanti extends JFrame
                         Integer value = Integer.valueOf(valuetext);
                         String ruolo = (String) ruoloComboBox.getSelectedItem();
 
-                        co.rendikeyorspec(value, ruolo);
+                        curr.rendikeyorspec(value, ruolo);
 
 
                         new StatusPanel("Operazione andata a buon fine", true);
 
-                        new TabellaSessioneOrg();
+                        new TabellaSessioneOrg(curr);
                     } catch (NumberFormatException ex)
                     {
                         // Se il valore non è un intero valido
@@ -238,11 +236,9 @@ public class ViewPartecipanti extends JFrame
 
             try {
 
-                DBConnection dbConnection = DBConnection.getConnessione();
-                Controller co = new Controller(dbConnection);
 
 
-                List<PartecipanteDTO> partlist = co.getListaPartecipante();
+                List<PartecipanteDTO> partlist = curr.getListaPartecipante();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codise Partecipante", "Nome", "Cognome", "keynote speaker", "titolo", "Partecipante Specifico"};

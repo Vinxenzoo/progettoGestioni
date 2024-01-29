@@ -1,7 +1,6 @@
 package GUI;
 
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -23,7 +22,11 @@ public class PaginaLoginOrgeCoo extends JFrame
         private JTextField cognomefield;
         private JPasswordField passwordField;
 
-        public PaginaLoginOrgeCoo() {
+        private Controller curr;
+
+        public PaginaLoginOrgeCoo(Controller currcontroller)
+        {
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -204,21 +207,17 @@ public class PaginaLoginOrgeCoo extends JFrame
 
         String ruolo = (String) ruoloComboBox.getSelectedItem();
 
-        // Verifica le credenziali nel database
-        DBConnection dbConnection = DBConnection.getConnessione();
-        Controller controller = new Controller(dbConnection);
-
 
 
         if(ruolo == "organizzatore")
         {
-            if (controller.accessoorg(nome, cognome, email, password))
+            if (curr.accessoorg(nome, cognome, email, password))
             {
                 new StatusPanel("Accesso Riuscito", true);
 
                 dispose();
 
-                new HomePageOrg();
+                new HomePageOrg(curr);
             }
             else {
                 new StatusPanel("Credenziali non valide", false);
@@ -229,10 +228,10 @@ public class PaginaLoginOrgeCoo extends JFrame
         {
             if(ruolo == "coordinatore")
             {
-                if (controller.accessocoo(nome, cognome, email, password))
+                if (curr.accessocoo(nome, cognome, email, password))
                 {
 
-                    new HomePageCoo();
+                    new HomePageCoo(curr);
                 }
                 else
                 {

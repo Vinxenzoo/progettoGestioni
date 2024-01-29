@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.FeedbackDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -18,12 +17,12 @@ import java.util.List;
 
 public class CommentoFeed extends JFrame
 {
-
-    DBConnection dbConnection = DBConnection.getConnessione();
-    Controller co = new Controller(dbConnection);
+    private Controller curr;
         private JTable table;
 
-        public CommentoFeed() {
+        public CommentoFeed(Controller currconttoller) {
+
+            this.curr = currconttoller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -123,7 +122,7 @@ public class CommentoFeed extends JFrame
                 public void actionPerformed(ActionEvent e)
                 {
                     dispose();
-                    new HomePage();
+                    new HomePage(curr);
 
                 }
             });
@@ -147,7 +146,7 @@ public class CommentoFeed extends JFrame
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                   new VisualizzaCommento();
+                   new VisualizzaCommento(curr);
 
                 }
             });
@@ -249,12 +248,12 @@ public class CommentoFeed extends JFrame
                             if (!ema.isEmpty())
                             {
 
-                               co.lasciacommento(value, ab, ema);
+                               curr.lasciacommento(value, ab, ema);
 
                                 new StatusPanel("Operazione andata a buo fine", true);
                                 dispose();
 
-                                new GUI.CommentoFeed();
+                                new GUI.CommentoFeed(curr);
                             }
                             else
                             {
@@ -286,7 +285,7 @@ public class CommentoFeed extends JFrame
             try {
 
                 //  ottenere i dati dalla tabella Sessione
-                List<FeedbackDTO> feedlist = co.getListafeedback();
+                List<FeedbackDTO> feedlist = curr.getListafeedback();
 
                 // Colonne della tabella
                 String[] columnNames = {"Codice feedback", "Descrizione", "Codice Intervento" };

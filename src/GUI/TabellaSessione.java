@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.SessioneDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -18,7 +17,11 @@ import java.util.List;
 public class TabellaSessione extends JFrame {
     private JTable table;
 
-    public TabellaSessione() {
+    private Controller curr;
+
+    public TabellaSessione(Controller currcontroller)
+    {
+        this.curr = currcontroller;
         JPanel mainPanel = new JPanel(new BorderLayout()) {
             @Override
             protected void paintComponent(Graphics g) {
@@ -118,7 +121,7 @@ public class TabellaSessione extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Logica per tornare alla Home, ad esempio chiudere questa finestra e aprire la Home
                 dispose();
-                new HomePage();  // Assumendo che HomePage sia la classe per la tua home page
+                new HomePage(curr);  // Assumendo che HomePage sia la classe per la tua home page
             }
         });
 
@@ -200,10 +203,6 @@ public class TabellaSessione extends JFrame {
 
         inputPanel.add(emailtext, gbc);
 
-
-        DBConnection dbConnection = DBConnection.getConnessione();
-        Controller co = new Controller(dbConnection);
-
         JButton confirmButton = createButtonWithShadow("Conferma");
         confirmButton.addActionListener(new ActionListener() {
             @Override
@@ -217,11 +216,11 @@ public class TabellaSessione extends JFrame {
                     String email = emailtext.getText();
 
                    if(!email.isEmpty()) {
-                       co.presenzapartecnammissione(value, email);
+                       curr.presenzapartecnammissione(value, email);
 
                        new StatusPanel("Operazione andata a buon fine", true);
 
-                       new TabellaSessione();
+                       new TabellaSessione(curr);
                    }
                    else
                    {
@@ -249,11 +248,8 @@ public class TabellaSessione extends JFrame {
 
         try {
 
-            DBConnection dbConnection = DBConnection.getConnessione();
-            Controller co = new Controller(dbConnection);
 
-
-            List<SessioneDTO> sessionelist = co.getListaSessione();
+            List<SessioneDTO> sessionelist = curr.getListaSessione();
 
             // Colonne della tabella
             String[] columnNames = {"Codise Sessione", "Orario Predefinito ", "Ora Prestabilita", "Codice Conferenza"};
@@ -309,8 +305,6 @@ public class TabellaSessione extends JFrame {
 
         return button;
     }
-
-
 
 
 }

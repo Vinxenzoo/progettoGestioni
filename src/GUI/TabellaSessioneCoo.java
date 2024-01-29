@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.SessioneDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -19,7 +18,11 @@ public class TabellaSessioneCoo extends JFrame
 {
         private JTable table;
 
-        public TabellaSessioneCoo() {
+        private Controller curr;
+
+        public TabellaSessioneCoo(Controller currcontroller)
+        {
+            this.curr = currcontroller;
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -118,7 +121,7 @@ public class TabellaSessioneCoo extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     // Logica per tornare alla Home, ad esempio chiudere questa finestra e aprire la Home
                     dispose();
-                    new HomePageCoo();  // Assumendo che HomePage sia la classe per la tua home page
+                    new HomePageCoo(curr);  // Assumendo che HomePage sia la classe per la tua home page
                 }
             });
 
@@ -130,7 +133,7 @@ public class TabellaSessioneCoo extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     // Logica per tornare alla Home, ad esempio chiudere questa finestra e aprire la Home
                     dispose();
-                    new EliminaInAmmCoo();  // Assumendo che HomePage sia la classe per la tua home page
+                    new EliminaInAmmCoo(curr);  // Assumendo che HomePage sia la classe per la tua home page
                 }
             });
 
@@ -224,10 +227,6 @@ public class TabellaSessioneCoo extends JFrame
         emtext.setFont(labelFont);
         inputPanel.add(emtext, gbc);
 
-
-        DBConnection dbConnection = DBConnection.getConnessione();
-        Controller co = new Controller(dbConnection);
-
         JButton confirmButton = createButtonWithShadow("Conferma");
         confirmButton.addActionListener(new ActionListener() {
             @Override
@@ -245,12 +244,12 @@ public class TabellaSessioneCoo extends JFrame
                  if (!ab.isEmpty())
                  {
                      if (!tip.isEmpty()) {
-                         co.inse_occ_ex(value, ab, tip);
+                         curr.inse_occ_ex(value, ab, tip);
 
                          new StatusPanel("Operazione andata a buon fine", true);
                          dispose();
 
-                         new TabellaSessioneCoo();
+                         new TabellaSessioneCoo(curr);
                      }
                      else
                      {
@@ -283,11 +282,8 @@ public class TabellaSessioneCoo extends JFrame
 
         try {
 
-            DBConnection dbConnection = DBConnection.getConnessione();
-            Controller co = new Controller(dbConnection);
 
-
-            List<SessioneDTO> sessionelist = co.getListaSessione();
+            List<SessioneDTO> sessionelist = curr.getListaSessione();
 
             // Colonne della tabella
             String[] columnNames = {"Codise Sessione", "Orario Predefinito ", "Ora Prestabilita", "Codice Conferenza"};

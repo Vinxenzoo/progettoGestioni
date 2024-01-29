@@ -2,12 +2,14 @@ package GUI;
 
 import DTO.ConferenzaDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
-import java.awt.event.*;
 
 
 public class Mostraconfingui extends JFrame
@@ -15,7 +17,10 @@ public class Mostraconfingui extends JFrame
         private JComboBox<String> conferenzaComboBox;
         private DefaultComboBoxModel<String> conferenzaComboBoxModel;
 
-        public Mostraconfingui() {
+        private Controller curr;
+        public Mostraconfingui(Controller currcontroller)
+        {
+            this.curr = currcontroller;
             // Creazione del pannello principale
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
@@ -96,7 +101,7 @@ public class Mostraconfingui extends JFrame
                 public void actionPerformed(ActionEvent e)
                 {
                     dispose();
-                    new TabellaSessione();
+                    new TabellaSessione(curr);
                 }
             });
             loginButton.setForeground(Color.BLUE);
@@ -173,11 +178,8 @@ public class Mostraconfingui extends JFrame
         private void updateConferenzaComboBox()
         {
 
-            DBConnection dbConnection = new DBConnection();
-            Controller controller = new Controller(dbConnection);
 
-
-            List<ConferenzaDTO> listaConferenze = controller.getListaConferenze();
+            List<ConferenzaDTO> listaConferenze = curr.getListaConferenze();
 
             // Pulisci il modello della JComboBox
             conferenzaComboBoxModel.removeAllElements();
