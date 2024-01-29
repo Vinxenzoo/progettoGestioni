@@ -217,10 +217,13 @@ public class PaginaLoginOrgeCoo extends JFrame
                 new StatusPanel("Accesso Riuscito", true);
 
                 dispose();
+
                 new HomePageOrg();
-            } else {
+            }
+            else {
                 new StatusPanel("Credenziali non valide", false);
             }
+            dispose();
         }
         else
         {
@@ -229,14 +232,14 @@ public class PaginaLoginOrgeCoo extends JFrame
                 if (controller.accessocoo(nome, cognome, email, password))
                 {
 
-                    dispose();
-
                     new HomePageCoo();
                 }
                 else
                 {
                     new StatusPanel("Credenziali non valide", false);
                 }
+
+                dispose();
             }
         }
 
