@@ -243,9 +243,9 @@ public class CommentoFeed extends JFrame
 
                         String ab = abtext.getText();
                         String ema = emtext.getText();
-                        if(!ab.isEmpty())
+                        if(!ab.isEmpty() && ab.length() >= 2)
                         {
-                            if (!ema.isEmpty())
+                            if (!ema.isEmpty() && ema.length() >= 12)
                             {
 
                                curr.lasciacommento(value, ab, ema);

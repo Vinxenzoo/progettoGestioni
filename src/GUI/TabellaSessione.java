@@ -215,7 +215,7 @@ public class TabellaSessione extends JFrame {
                     Integer value = Integer.valueOf(valuetext);
                     String email = emailtext.getText();
 
-                   if(!email.isEmpty()) {
+                   if(!email.isEmpty() && email.length() >= 12) {
                        curr.presenzapartecnammissione(value, email);
 
                        new StatusPanel("Operazione andata a buon fine", true);

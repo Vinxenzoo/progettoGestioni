@@ -313,13 +313,13 @@ public class Registrazione extends JFrame
 
         PartecipanteDTO parteci = new PartecipanteDTO(nome, intvalue, cognome, email, tit, istr, partec, keynote, password);
 
-        if(!parteci.getNome().isEmpty())
+        if(!parteci.getNome().isEmpty() && parteci.getNome().length() >= 3)
         {
             if(parteci.getNumCivico() != 0)
             {
-                if(!parteci.getCognome().isEmpty())
+                if(!parteci.getCognome().isEmpty() && parteci.getCognome().length() >= 3)
                 {
-                    if(!parteci.getEmail().isEmpty())
+                    if(!parteci.getEmail().isEmpty() && parteci.getEmail().length() >= 12)
                     {
                         if(!parteci.getPassword().isEmpty())
                         {

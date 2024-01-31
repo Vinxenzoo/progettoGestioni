@@ -241,7 +241,7 @@ public class TabellaSessioneCoo extends JFrame
                     String ab = abtext.getText();
                     String tip = emtext.getText();
 
-                 if (!ab.isEmpty())
+                 if (!ab.isEmpty() && ab.length() >= 20)
                  {
                      if (!tip.isEmpty()) {
                          curr.inse_occ_ex(value, ab, tip);
@@ -258,7 +258,7 @@ public class TabellaSessioneCoo extends JFrame
                  }
                  else
                  {
-                     new StatusPanel("Inserisci il valore nel campo descrizione", false);
+                     new StatusPanel("Inserisci il valore valido nel campo descrizione", false);
                  }
                 } catch (NumberFormatException ex)
                 {
