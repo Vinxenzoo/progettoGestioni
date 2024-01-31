@@ -2,7 +2,6 @@ package GUI;
 
 import DTO.AmmissioneDTO;
 import UTILITIES.Controller;
-import UTILITIES.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -203,10 +202,6 @@ public class EliminaInAmmCoo extends JFrame
         sestext.setFont(labelFont);
         inputPanel.add(sestext, gbc);
 
-
-        DBConnection dbConnection = DBConnection.getConnessione();
-        Controller co = new Controller(dbConnection);
-
         JButton confirmButton = createButtonWithShadow("Conferma");
         confirmButton.addActionListener(new ActionListener() {
             @Override
@@ -222,7 +217,7 @@ public class EliminaInAmmCoo extends JFrame
                     Integer sesvalue = Integer.valueOf(ses);
 
 
-                    co.cancellap(value, sesvalue);
+                    curr.cancellap(value, sesvalue);
 
                     new StatusPanel("Operazione andata a buon fine", true);
 
