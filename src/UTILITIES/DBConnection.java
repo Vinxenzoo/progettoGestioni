@@ -4,10 +4,6 @@ import java.sql.*;
 
 public class DBConnection {
 
-    private static final String URL = "jdbc:postgresql://localhost:5433/Gestioniscientifiche";
-    private static final String USERNAME = "postgres";
-    private static final String PASSWORD = "nunzia09";
-
     /*I tipi Connection e Statement fanno parte della libreria java.SQL*/
 
     private Connection connection;
